@@ -1,0 +1,113 @@
+<html>
+    <head>
+    <title>form</title>
+    <style>
+
+    form{
+        text-align: center;
+        padding:10%;
+        margin-top: 1%;
+        position: fixed;
+        top:0px;
+        right: 15%;
+        width:60%;
+
+    }
+
+    form label{
+        text-transform: uppercase;
+        font-size: 20px;
+        color:blue;
+    }
+    
+        #rad{
+
+            position: absolute;
+            right: 3%;
+          
+        }
+
+        form input{
+            width:55%;
+            margin-top: 2%;
+            padding: 1%;
+        }
+    form button{
+        margin-top: 2%;
+        color:blue;
+        background-color: darkslategrey;
+        padding: 2%;
+        border-radius: 20%;
+
+    }
+    .gender{
+        color:blue;
+        position:absolute;
+
+    }
+    .head1{
+        color: blue;
+        position:absolute;
+        left:35%;
+        top:80%;
+    }
+    #female {
+        color:blue;
+        position: absolute;
+        top:60%;
+        right: 19%;
+    }
+    #male{
+
+        position: absolute;
+        top:63%;
+        right: 19%;
+        
+    }
+    .head{
+        color:blue;
+        position: absolute;
+        right: 50%;
+top:4%;
+    }
+    
+</style>
+    </head>
+
+    <body>
+        <h1 class="head">SIGN IN PACE</h1>
+        
+        <form action="create.php" method="post">
+        <label>firstname</label><br/>
+        <input type="text" name="first" id="first"/><br/>
+        <label>lastname</label><br/>
+        <input type="text" name="last" id="last"/><br/>
+        <label>Email</label><br/>
+        <input type="email" name="email" id="email"/><br/>
+        <label>password</label><br/>
+        <input type="password" name="password" id="password"/>
+        <input type="checkbox" name="rad" id="rad"/>
+        <br>
+        <label>Gender</label><br/>
+        <label for="Male">Male</label><br/>
+        <input type="radio" name="gender" id="male" value="male" class="gender"/> 
+        <label for="Male">Female</label><br/>
+        <input type="radio" name="gender" id="female" value="female" class="gender">
+        <button type="submit" name="submit">SUBMIT</button>
+        </form>
+        <h1 class="head1">Already have account?<a href="./login.html">LOGIN</a></h1>
+        <script>
+    const password=document.getElementById('password');
+    const rad=document.getElementById('rad');
+    rad.addEventListener('change',function(){
+        if(rad.checked){
+            password.type='text';
+        }
+        else{
+            password.type='password'
+        }
+
+    })
+   </script>
+    </body>
+</html>
