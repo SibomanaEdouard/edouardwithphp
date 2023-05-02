@@ -8,12 +8,16 @@ $rows=mysqli_fetch_assoc($result);
 
 
 
+
 if($result->num_rows>0){
     while($rows=$result->fetch_assoc()){
         $users[]=$rows;
     }
 
 }
+session_start();
+$id=$user['id'];
+$_SESSION['id']=$id;
 
  ?>
 <!DOCTYPE html>
@@ -29,10 +33,10 @@ if($result->num_rows>0){
       }  
       table{
         border: 1px;
-        width: 100%;
+        width: 90%;
         height: 40vh;
       }
-      .update{
+      /* .update{
         color: orange;
         background-color: blue;
         padding: 2%;
@@ -47,7 +51,7 @@ if($result->num_rows>0){
         text-decoration: none;
         border-radius: 12px;
         margin-left: 10%;
-      }
+      } */
       a{
         text-decoration: none;
       }
@@ -82,22 +86,34 @@ if($result->num_rows>0){
             <th>Last Name</th>
             <th>Email</th>
             <th>Gender</th>
+            <th>ACTIONS</th>
+            
         </tr>
         <?php foreach ($users as $user): ?>
             
             <tr>
                 <td><?php echo $user['firstname']; ?></td>
                 <td><?php echo $user['lastname'];?></td>
-                <td><?php echo $user['email']; ?></td>
-                <td><?php echo $user['gender']; ?></td>
+                <td><?php echo $user['email'];?></td>
+                <td><?php echo $user['gender'];?></td>
+             
+                <td>
+                <?php echo "<button class='update'><a href='./update.php?id=".$user['id']."'>UPDATE</a></button>"?>
+                  <?php echo "<button class='delete' id='ident' onClick='AddAlert()'><a href='./delete.php?id=".$user['id']."'>DELETE</a></button>"?>
+              </td>
                
             </tr>
             
         <?php endforeach; ?>
     </table><br/>
 
-    <button class="update"><a href="./update.html" >UPDATE</a></button>  <button class="delete"> <a href="delete.html">DELETE</a></button><br/>
-    <button class="csv"><a href="./csvdata.php" >CSV</a></button><button class="pdf"><a href="./pdfdata.php">PDF</a></button>
+    <button class="csv"><a href="./csvdata.php">CSV</a></button>
+    <button class="pdf"><a href="./pdfdata.php">PDF</a></button>
+    <Script>
+      function AddAlert(){
+        alert("Are you sure you want to be deleted permenenly from our system?");
+      }
+    </Script>
                 
 </body>
 </html>

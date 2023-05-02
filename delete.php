@@ -1,28 +1,15 @@
 <?php
 include('connection.php');
-if(isset($_POST['submit'])){
-  
-    $email=$_POST['email'];
-    $password=md5($_POST['password']);
-    
-    if(!empty($email) || !empty($password)){
-      
+//getting id from the url
 
-    $sql="DELETE FROM users WHERE email='$email'";
-    $result=$connect->query($sql);
-    if($result){
-header('location:form.php');
-echo "FIne";
-    }
-    else{
-        echo " Wrong email or password ";
-    }
-    }
-    else{
-        echo "All credentials are required !";
-    }
+$id=$_GET['id'];
+
+$sql="DELETE FROM users WHERE id='$id'";
+$result=$connect->query($sql);
+if($result){
+   header("location:form.html");
 }
 else{
-    echo "Some thing went wrong ! ";
+  echo "Something went wrong please try again!";
 }
 ?>
